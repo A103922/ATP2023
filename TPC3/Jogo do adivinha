@@ -1,1 +1,51 @@
+#Solução do exercício TP3
+print("Vamos jogar ao jogo da adivinha!")
+print("Este jogo tem dois modos:")
+print("   1.Tu tentas acertar no número em que o computador está a pensar")
+print("   2.O computador tenta acertar no número em que estás a pensar")
+pergunta1=input("Modo 1 ou 2?")
+import random
+a = int(random.randint(0,100))
+if pergunta1 == "1":
+    tentativas=1 
+    pergunta2=input("Tenta adivinhar no número em que estou a pensar de 0 a 100")
+    b=int(pergunta2)
+    while b != a:
+      if b<a:
+         pergunta2=input("O número em que estou a pensar é maior")
+         b=int(pergunta2)
+         tentativas=tentativas+1
+      if b>a:
+         pergunta2=input("O número em que estou a pensar é menor")
+         b=int(pergunta2)
+         tentativas=tentativas+1
+    if b == a:
+         ("Parabéns!Acertaste no número")
+         print("Número de tentativas:"+str(tentativas))
+if pergunta1 == "2":
+    print(a)
+    tentativas = 1
+    mínimo = 0
+    máximo = 1000
+    palpite=0
+    input1=input("Acertei? Se não, diz se o número que estás a pensar é maior ou menor?")
+    while input1!= "acertou":
+      if input1=="menor" :       
+         máximo=a-1           
+         palpite =(random.randint(mínimo,máximo))
+         print (palpite)
+         a=int(palpite)
+         tentativas=tentativas+1
+         input1=input("Acertei? Se não, diz se o número que estás a pensar é maior ou menor?")
+      if input1 == "maior": 
+         mínimo=a+1
+         palpite =(random.randint(mínimo,máximo))
+         print (palpite)
+         a=int(palpite)   
+         tentativas=tentativas+1
+         input1=input("Acertei? Se não, diz se o número que estás a pensar é maior ou menor?")
+    if input1 == "acertou":
+      print("O jogo acabou!")
+      print("Número de tentativas:"+str(tentativas))
 
+  #O número de tentativas necessárias é sempre um número perto de 10(nunca chegando às 20 tentativas),sendo o jogo da adivinha de 0 a 100 ou de 0 a 1000.
